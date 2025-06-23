@@ -1,0 +1,7 @@
+1password
+cursor-bin
+devilspie2
+google-chrome
+logseq-desktop
+slack-desktop
+upwork

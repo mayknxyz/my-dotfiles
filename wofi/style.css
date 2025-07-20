@@ -1,0 +1,35 @@
+/* Updated Wofi CSS - Black & White with Nord Blue Border */
+window {
+    background-color: black; /* Black background */
+    border: 2px solid #ffffff; /* White blue border */
+    border-radius: 8px;
+}
+
+#input {
+    background-color: black; /* Black input background */
+    color: white; /* White text for input */
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    margin: 5px;
+}
+
+#entry {
+    padding: 8px 10px;
+    color: white; /* White text for entries */
+    font-size: 1.1em;
+}
+
+#entry:selected {
+    background-color: white; /* White background for selected item */
+    color: black; /* Black text for selected item */
+    border-radius: 4px;
+}
+
+#entry:selected #text { /* Target the text inside the selected entry */
+    color: black; /* Black text for the selected entry's text */
+}
+
+#text {
+    margin-left: 5px;
+}

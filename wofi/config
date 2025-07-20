@@ -1,0 +1,9 @@
+# Example Wofi config
+mode=drun
+lines=10
+width=30%
+height=400px
+location=center
+prompt=
+# Add more options as needed
+# dmenu-parse_action=true

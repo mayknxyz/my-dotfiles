@@ -1,0 +1,87 @@
+{
+    // Waybar configuration file for Hyprland - Black & White Theme
+
+    "layer": "top", // Ensures Waybar is always on top
+    "position": "top", // Position the bar at the top of the screen
+    "height": 30,      // Height of the bar
+    "spacing": 0,      // No spacing between modules by default
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+
+    // Define the modules to be displayed on the left, center, and right
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "battery",
+        "tray"
+    ],
+
+    // --- Module Configurations ---
+
+    "hyprland/workspaces": {
+        "format": "{id}", // Displays workspace ID (e.g., 1, 2, 3)
+        // You can use "{icon}" if you prefer icons and define them in format-icons
+        // "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "on-click": "activate",
+        "persistent-workspaces": { // Show 10 persistent workspaces on all monitors
+            "*": 10
+        },
+        "format-icons": {
+            "active": "●", // Dot for active workspace
+            "default": "○", // Circle for inactive workspace
+            "empty": "○", // Same for empty
+            "urgent": "!" // Exclamation for urgent
+        },
+        "all-outputs": true // Show all workspaces on all monitors
+    },
+
+    "hyprland/window": {
+        "format": "{}", // Displays the active window title
+        "max-length": 50 // Limit the length of the window title
+    },
+
+    "clock": {
+        "format": "{:%H:%M}", // Time in HH:MM format
+        "tooltip-format": "<big>{:%Y %B %d}</big>\n<small>{:%A}</small>" // Full date on hover
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", ""] // Speaker icons for different volume levels
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle", // Mute/unmute on click
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%", // Increase volume on scroll up
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%" // Decrease volume on scroll down
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "充電 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""], // Battery icons
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": true
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    }
+}

@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    background-color: rgba(43, 48, 59, 0);
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -50,7 +50,7 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: #a37800;
+    /* background-color: #a37800; */
 }
 
 #workspaces button {
@@ -114,30 +114,30 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: transparent;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    /* background-color: #ffffff; */
+    color: #ffffff;
 }
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    /* background-color: #26A65B */;
 }
 
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: #000000;
+        color: #d30000;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    /* background-color: #f53c3c; */
+    color: #d30000;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -184,32 +184,50 @@ label:focus {
 #backlight {
     background-color: #90b1b1;
 }
-
+  
 #network {
-    background-color: #2980b9;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px; /* Or 0px if you want sharp corners */
+    padding: 0 8px;
+    margin: 0 4px;
+    color: #ffffff; /* Color of the icon itself */
+}
+
+/* IMPORTANT: Also set these to transparent/white border if they are active */
+#network.wifi {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+}
+
+#network.ethernet {
+    background-color: transparent;
+    border: 1px solid #ffffff;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: transparent;
+    border: 1px solid #ff0000; /* Example: red border when disconnected */
+    color: #ff0000;
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    /* background-color: #f1c40f; */
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    /* background-color: #90b1b1; */
+    color: #d30000;
 }
 
 #wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+    /* background-color: #fff0f5; */
+    color: #ffffff;
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+    /* background-color: #f53c3c;*/
 }
 
 #custom-media {
@@ -235,7 +253,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: transparent;
 }
 
 #tray > .passive {

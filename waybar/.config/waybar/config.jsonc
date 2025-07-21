@@ -5,46 +5,40 @@
     "position": "top", // Position the bar at the top of the screen
     "height": 30,      // Height of the bar
     "spacing": 0,      // No spacing between modules by default
-    "margin-top": 0,
+    "margin-top": 6,
     "margin-bottom": 0,
-    "margin-left": 0,
-    "margin-right": 0,
+    "margin-left": 20,
+    "margin-right": 20,
 
     // Define the modules to be displayed on the left, center, and right
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window"
     ],
-    "modules-center": [
-        "clock"
-    ],
     "modules-right": [
+        "tray",
         "pulseaudio",
         "battery",
-        "tray"
+	"clock",
     ],
 
     // --- Module Configurations ---
 
-    "hyprland/workspaces": {
-        "format": "{id}", // Displays workspace ID (e.g., 1, 2, 3)
-        // You can use "{icon}" if you prefer icons and define them in format-icons
-        // "format": "{icon}",
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1",
-        "on-click": "activate",
-        "persistent-workspaces": { // Show 10 persistent workspaces on all monitors
-            "*": 10
-        },
-        "format-icons": {
-            "active": "●", // Dot for active workspace
-            "default": "○", // Circle for inactive workspace
-            "empty": "○", // Same for empty
-            "urgent": "!" // Exclamation for urgent
-        },
-        "all-outputs": true // Show all workspaces on all monitors
-    },
-
+	  "hyprland/workspaces": {
+	    "format": "{id}",
+	    // Disable dynamic scrolling which creates new workspaces
+	    // "on-scroll-up": "hyprctl dispatch workspace e-1",
+	    // "on-scroll-down": "hyprctl dispatch workspace e+1",
+	    "swap-icon-label": true,
+	    "on-click": "activate",
+	    "disable-scroll": true, // Prevents scrolling altogether if you only want explicit switching
+	    "all-outputs": false, // CRITICAL: Only show workspaces relevant to the current monitor's Waybar
+	    "persistent-workspaces": { // CRITICAL: Explicitly define which workspaces appear on which monitor
+	      "eDP-1": [1, 2, 3],       // Laptop monitor - ONLY show 1, 2, 3
+	      "HDMI-A-1": [4, 5, 6],        // 2nd monitor - ONLY show 4, 5, 6 (replace DP-1 with your actual name)
+	      "DP-1": [7, 8, 9]     // 3rd monitor - ONLY show 7, 8, 9 (replace HDMI-A-1 with your actual name)
+	    }
+	  },  
     "hyprland/window": {
         "format": "{}", // Displays the active window title
         "max-length": 50 // Limit the length of the window title
@@ -57,7 +51,7 @@
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": " Muted",
+        "format-muted": "muted",
         "format-icons": {
             "default": ["", ""] // Speaker icons for different volume levels
         },
@@ -68,7 +62,7 @@
 
     "battery": {
         "format": "{icon} {capacity}%",
-        "format-charging": "充電 {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""], // Battery icons

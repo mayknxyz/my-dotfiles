@@ -35,8 +35,8 @@
 	    "all-outputs": false, // CRITICAL: Only show workspaces relevant to the current monitor's Waybar
 	    "persistent-workspaces": { // CRITICAL: Explicitly define which workspaces appear on which monitor
 	      "eDP-1": [1, 2, 3],       // Laptop monitor - ONLY show 1, 2, 3
-	      "HDMI-A-1": [4, 5, 6],        // 2nd monitor - ONLY show 4, 5, 6 (replace DP-1 with your actual name)
-	      "DP-1": [7, 8, 9]     // 3rd monitor - ONLY show 7, 8, 9 (replace HDMI-A-1 with your actual name)
+	      "HDMI-A-1": [4, 5, 6],        // 2nd monitor - ONLY show 4, 5, 6
+	      "DP-1": [7, 8, 9, 10]     // 3rd monitor - ONLY show 7, 8, 9, 10
 	    }
 	  },  
     "hyprland/window": {

@@ -44,8 +44,6 @@ $browser1 = google-chrome-stable
 $browser2 = zen-browser
 $calendar = Google Calendar
 $camera = cameractrls
-$codeEditor1 = cursor
-$codeEditor2 = neovim
 #codeHosting : github
 #compositor : hyprland
 #diskEncryption : LUKS
@@ -60,7 +58,6 @@ $fileManager3 = Google Drive
 #greeter : ly
 #imageViewer : imv
 $LLM = gemini
-#lockScreen = hyprlock
 #manual : man-db
 $messenger1 = discord
 $messenger2 = slack
@@ -76,7 +73,6 @@ $screenshot = flameshot
 #systemRestore : timeshift
 $terminal1 = ghostty
 $terminal2 = kitty
-#textEditor = nano
 #textSearchers : ripgrep, grep
 #versionControl : git
 $volumeControl = pavucontrol
@@ -94,30 +90,23 @@ exec-once = nm-applet
 exec-once = hyprpaper
 exec-once = /usr/lib/xdg-desktop-portal
 exec-once = /usr/lib/xdg-desktop-portal-hyprland
-exec-once = systemctl --user start hyprpolkitagent
 
 # open apps
-#gemini = gdfaincndogidkdcdkhapmbffkckdkhn
-exec-once = [workspace 2 silent] $noteTaker
-#exec-once = [workspace 2 silent] $browser1 --app="https://mail.google.com/"
-#exec-once = [workspace 2 silent] google-chrome-stable --profile-directory=Default --app-id=fmgjjmmmlfnkbppncabfkddbjimcfncm
-#exec-once = [workspace 3 silent] $browser1 --app="https://calendar.google.com/"
+exec-once = [workspace 1 silent] $noteTaker 
+exec-once = [workspace 2 silent] 
+exec-once = [workspace 3 silent] $browser1 --app="https://mail.google.com/"
 #exec-once = [workspace 3 silent] github
-#exec-once = [workspace 4 silent] $codeEditor1
-exec-once = [workspace 5 silent] $codeEditor2
-exec-once = [workspace 6 silent] $terminal1
+#exec-once = [workspace 4 silent] cursor
+#exec-once = [workspace 5 silent] neovim
+#exec-once = [workspace 5 silent] 
 exec-once = [workspace 7 silent] $browser1
 #exec-once = [workspace 7 silent] umami
 #exec-once = [workspace 7 silent] uptimekuma
 exec-once = [workspace 8 silent] $messenger1
 exec-once = [workspace 8 silent] $messenger2
-#exec-once = [workspace 9 silent] 
+exec-once = [workspace 9 silent] $terminal1
 #exec-once = [workspace 10 silent] $LLM1
 exec-once = [workspace 10 silent] $passwordManager
-
-#windowrule = workspace 2, title:^(Gmail)$
-windowrule = workspace 3, title:^(Google Calendar)$
-
 #############################
 ### ENVIRONMENT VARIABLES ###
 #############################
@@ -308,7 +297,6 @@ bind = $mainMod, V, togglefloating,
 bind = $mainMod, Space, exec, $appLauncher
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
-bind = $mainMod, Delete, exec, hyprlock
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l

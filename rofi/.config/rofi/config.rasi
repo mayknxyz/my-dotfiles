@@ -9,6 +9,6 @@ configuration {
 
 }
 
-@import "~/.config/rofi/DarkTransparentColors.rasi" // Keep this line if you want your theme
+@import "~/.config/rofi/themes/black-white.rasi" // Import the new pure black and white theme
 
 // ... all your other styling blocks (window, mainbox, message, etc.)

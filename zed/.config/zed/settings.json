@@ -7,8 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "context7_api_key": "ctx7sk-f6333038-52b2-4f73-9a67-061ea181c083"
+      }
+    }
+  },
   "terminal": {
-    "dock": "right"
+    "dock": "right",
+    "shell": {
+      "program": "bash"
+    }
   },
   "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
@@ -18,5 +30,86 @@
     "light": "Ayu Light",
     "dark": "Ayu Dark"
   },
-  "soft_wrap": "editor_width"
+  "soft_wrap": "editor_width",
+
+  // Added configurations for your web dev stack
+  "formatter": "prettier",
+  "format_on_save": "on",
+  "tab_size": 2,
+  "hard_tabs": false,
+
+  "languages": {
+    "TypeScript": {
+      "formatter": "prettier",
+      "tab_size": 2,
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+      }
+    },
+    "JavaScript": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "Svelte": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "Astro": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "JSON": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "CSS": {
+      "formatter": "prettier",
+      "tab_size": 2
+    }
+  },
+
+  "lsp": {
+    "typescript-language-server": {
+      "settings": {
+        "typescript": {
+          "preferences": {
+            "importModuleSpecifier": "relative",
+            "includePackageJsonAutoImports": "auto"
+          },
+          "suggest": {
+            "autoImports": true
+          }
+        }
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "tailwindCSS": {
+          "experimental": {
+            "classRegex": [
+              "class:\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+              "class\\s*=\\s*[\"'`]([^\"'`]*).*?[\"'`]",
+              "className:\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+              "className\\s*=\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "file_types": {
+    "Astro": ["astro"],
+    "Svelte": ["svelte"],
+    "TypeScript": ["ts", "tsx"],
+    "JavaScript": ["js", "jsx", "mjs"]
+  },
+
+  "auto_install_extensions": {
+    "astro": true,
+    "svelte": true,
+    "typescript": true,
+    "tailwindcss": true
+  }
 }

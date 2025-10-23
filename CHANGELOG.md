@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2025-10-24
+### Added
+- KEYBINDINGS.md - Complete keybindings cheat sheet for all applications
+- install.sh - Automated installation script with backup functionality
+- Comprehensive comments to Git configuration explaining each setting
+- Documentation section in README
+
+### Changed
+- Removed Git aliases (using full commands instead)
+- Changed Git default branch from 'master' to 'main'
+- Updated README with automated and manual installation instructions
+- README now references all documentation files
+
 ## [2.2.0] - 2025-10-24
 ### Added
 - Hyprland compositor configuration (10 config files)

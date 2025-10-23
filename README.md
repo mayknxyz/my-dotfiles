@@ -12,14 +12,29 @@ This repository contains my configuration files for Arch Linux (Omarchy). It use
 
 ## Installation
 
-### Prerequisites
+### Quick Setup (Automated)
 
 ```bash
-# Install Git and GNU Stow
+# Clone and run installation script
+git clone https://github.com/your-username/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
+```
+
+The installation script will:
+- ✅ Install GNU Stow if needed
+- ✅ Backup existing configurations
+- ✅ Deploy all dotfiles with stow
+- ✅ Optionally install system packages
+
+### Manual Setup
+
+**Prerequisites:**
+```bash
 sudo pacman -S git stow
 ```
 
-### Setup
+**Steps:**
 
 1. **Clone this repository**
 
@@ -32,10 +47,10 @@ cd ~/.dotfiles
 
 ```bash
 # Deploy specific package
-stow nvim
+stow hypr
 
 # Deploy all packages
-stow */
+stow hypr alacritty bash git nvim zed
 ```
 
 3. **Install system packages**
@@ -160,12 +175,18 @@ When setting up a new Omarchy system:
 
 ---
 
+## Documentation
+
+- **KEYBINDINGS.md** - Complete keybindings cheat sheet for Hyprland, Git, and Neovim
+- **CHANGELOG.md** - Version history and changes
+- **CLAUDE.md** - Documentation for Claude Code integration
+
 ## Notes
 
 - Always run `stow -n <package>` before deploying to check for conflicts
 - Back up existing configurations before stowing
 - This is a clean slate setup for Omarchy (migrated from EndeavourOS/Hyprland)
-- Check CHANGELOG.md for version history
+- The `install.sh` script automatically creates backups before deploying
 
 ---
 

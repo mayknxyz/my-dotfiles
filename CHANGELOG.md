@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2025-10-24
+### Added
+- Validation infrastructure with master validate.sh script
+- Individual validators: syntax-check, stow-check, symlink-check, package-check
+- Testing workflow script (test-package.sh) with guided branch management
+- Claude Code integration with 5 custom slash commands:
+  - /validate - Run all validation checks
+  - /test-config - Start testing workflow
+  - /new-adr - Create Architecture Decision Records
+  - /stow-package - Safely stow with validation
+  - /update-packages - Update package lists
+- Architecture Decision Records (ADRs):
+  - ADR-0001: Use GNU Stow
+  - ADR-0002: Hyprland Compositor
+  - ADR-0003: Package Structure
+  - ADR template for future decisions
+- CONTRIBUTING.md with development workflow and branching strategy
+- Validation & Testing section in README.md
+- Development Workflow section in README.md
+- Architecture Decisions section in README.md
+- Comprehensive updates to CLAUDE.md with validation, testing, and Claude commands
+
+### Changed
+- CLAUDE.md now includes validation commands, testing workflow, and best practices
+- README.md reorganized with validation, testing, and development sections
+- syntax-check.sh now properly handles JSONC files (Zed configs)
+
 ## [2.3.0] - 2025-10-24
 ### Added
 - KEYBINDINGS.md - Complete keybindings cheat sheet for all applications

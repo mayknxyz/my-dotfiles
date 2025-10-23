@@ -16,6 +16,10 @@ This is a personal dotfiles repository for an Arch Linux (Omarchy) system. It us
 - Example: `git/.gitconfig` → stows to `~/.gitconfig`
 
 **Active Packages:**
+- `hypr/` - Hyprland compositor configuration
+- `alacritty/` - Alacritty terminal emulator configuration
+- `bash/` - Bash shell configuration
+- `git/` - Git configuration with aliases
 - `nvim/` - Neovim configuration with custom keymaps
 - `zed/` - Zed editor configuration
 
@@ -101,6 +105,32 @@ git commit -m "Add zsh configuration"
 
 ### Current Configuration
 
+**Hyprland (Window Manager):**
+- Location: `hypr/.config/hypr/`
+- Main config: `hypr/.config/hypr/hyprland.conf`
+- Key files:
+  - `bindings.conf` - Keybindings
+  - `monitors.conf` - Monitor configuration
+  - `input.conf` - Input device settings
+  - `looknfeel.conf` - Appearance settings
+  - `autostart.conf` - Startup applications
+  - `hyprlock.conf`, `hypridle.conf` - Lock screen and idle settings
+
+**Alacritty (Terminal):**
+- Location: `alacritty/.config/alacritty/`
+- Config: `alacritty/.config/alacritty/alacritty.toml`
+
+**Bash (Shell):**
+- Location: `bash/`
+- Files: `.bashrc`, `.bash_profile`, `.profile`
+
+**Git:**
+- Location: `git/.config/git/`
+- Config: `git/.config/git/config`
+- Ignore: `git/.config/git/ignore`
+- Aliases: co (checkout), br (branch), ci (commit), st (status)
+- User: Mike Navales <mike@mikenavales.xyz>
+
 **Neovim:**
 - Location: `nvim/.config/nvim/`
 - Configuration style: Lua-based
@@ -142,9 +172,13 @@ docs: Update README
 - `CHANGELOG.md` - Version history
 - `pacman_list.txt` - Official repository packages (165 packages)
 - `aur_list.txt` - AUR packages (2 packages)
+- `hypr/.config/hypr/hyprland.conf` - Hyprland main configuration
+- `hypr/.config/hypr/bindings.conf` - Hyprland keybindings
+- `alacritty/.config/alacritty/alacritty.toml` - Alacritty terminal config
+- `bash/.bashrc` - Bash shell configuration
+- `git/.config/git/config` - Git configuration and aliases
 - `nvim/.config/nvim/lua/config/keymaps.lua` - Neovim keybindings
 - `zed/.config/zed/settings.json` - Zed editor settings
-- `zed/.config/zed/keymap.json` - Zed keybindings
 
 ## System Setup Workflow
 
@@ -154,7 +188,7 @@ When setting up a new Omarchy system:
 2. Install git and stow: `sudo pacman -S git stow`
 3. Clone repository: `git clone <repo-url> ~/.dotfiles`
 4. Navigate: `cd ~/.dotfiles`
-5. Stow desired packages: `stow nvim zed` (add more as configured)
+5. Stow all packages: `stow hypr alacritty bash git nvim zed`
 6. Install system packages: `sudo pacman -S --needed $(cat pacman_list.txt)`
 7. Install AUR packages: `yay -S --needed $(cat aur_list.txt)`
 8. Log out and back in to apply settings

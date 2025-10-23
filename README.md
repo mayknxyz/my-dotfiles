@@ -56,6 +56,10 @@ This repository uses GNU Stow's directory structure:
 
 ```
 ~/.dotfiles/
+├── alacritty/     # Alacritty terminal configuration
+├── bash/          # Bash shell configuration
+├── git/           # Git configuration
+├── hypr/          # Hyprland compositor configuration
 ├── nvim/          # Neovim configuration
 ├── zed/           # Zed editor configuration
 ├── CLAUDE.md      # Documentation for Claude Code
@@ -65,21 +69,24 @@ This repository uses GNU Stow's directory structure:
 
 Each directory mirrors the home directory structure. For example:
 - `nvim/.config/nvim/` → `~/.config/nvim/`
-- `zed/.config/zed/` → `~/.config/zed/`
+- `hypr/.config/hypr/` → `~/.config/hypr/`
+- `bash/.bashrc` → `~/.bashrc`
 
 ---
 
 ## Current Configurations
 
-### Editors
+### Window Manager
+- **Hyprland** (`hypr/`) - Wayland compositor with custom keybindings, monitors, and appearance settings
+
+### Terminal & Shell
+- **Alacritty** (`alacritty/`) - GPU-accelerated terminal emulator
+- **Bash** (`bash/`) - Shell configuration with aliases and environment
+
+### Development
+- **Git** (`git/`) - Version control aliases and configuration
 - **Neovim** (`nvim/`) - Lua-based configuration with custom keymaps
 - **Zed** (`zed/`) - Modern code editor configuration
-
-### Planned Configurations
-- Shell (Zsh) - Coming soon
-- Git - Coming soon
-- Terminal emulator - Coming soon
-- Window manager/compositor - Coming soon
 
 ---
 
@@ -89,25 +96,27 @@ Each directory mirrors the home directory structure. For example:
 
 ```bash
 cd ~/.dotfiles
-stow nvim
+stow hypr    # Deploy Hyprland config
+stow alacritty  # Deploy Alacritty config
+stow bash    # Deploy Bash config
 ```
 
 ### Remove a package
 
 ```bash
-stow -D nvim
+stow -D hypr
 ```
 
 ### Re-deploy after changes
 
 ```bash
-stow -R nvim
+stow -R hypr
 ```
 
 ### Test deployment (dry-run)
 
 ```bash
-stow -n nvim
+stow -n hypr  # Check for conflicts before deploying
 ```
 
 ---
@@ -144,7 +153,7 @@ When setting up a new Omarchy system:
 2. Install prerequisites: `sudo pacman -S git stow`
 3. Clone dotfiles: `git clone <repo-url> ~/.dotfiles`
 4. Navigate to dotfiles: `cd ~/.dotfiles`
-5. Deploy packages: `stow nvim zed` (add others as configured)
+5. Deploy packages: `stow hypr alacritty bash git nvim zed`
 6. Install packages: `sudo pacman -S --needed $(cat pacman_list.txt)`
 7. Install AUR packages: `yay -S --needed $(cat aur_list.txt)`
 8. Log out and back in

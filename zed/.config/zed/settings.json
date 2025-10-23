@@ -8,6 +8,13 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "context_servers": {
+    "mcp-server-github": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "github_personal_access_token": "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"
+      }
+    },
     "mcp-server-context7": {
       "source": "extension",
       "enabled": true,

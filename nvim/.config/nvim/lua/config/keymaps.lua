@@ -117,28 +117,3 @@ end, { desc = "My custom keymaps menu" })
 vim.keymap.set("n", "<leader>mt", function()
   vim.cmd("botright vsplit | terminal")
 end, { desc = "Terminal vertical (right)" })
-
---[[
-=== CHANGELOG ===
-All notable changes to this keymap configuration will be documented here.
-Format based on Keep a Changelog (https://keepachangelog.com/en/1.0.0/)
-
-## [Unreleased]
-
-## [1.1.0] - 2025-10-24
-### Added
-- Buffer management section with navigation and cleanup shortcuts
-
-## [1.0.0] - 2025-10-24
-### Added
-- Custom keybind cheatsheet with search functionality (<leader>mk)
-- Consistent <leader>m prefix for all custom keymaps
-- <leader>m as alias to open keybind menu
-- <leader>mt to open terminal in vertical split (right side)
-- Delete operations section (ggdG to delete all file contents)
-- Insert modes reference section
-
-### Changed
-- Migrated from <leader>k to <leader>mk for cheatsheet
-- Reorganized keybinds with emoji headers for better readability
---]]

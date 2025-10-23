@@ -4,6 +4,65 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2025-10-24
+### Added
+- KEYBINDINGS.md - Complete keybindings cheat sheet for all applications
+- install.sh - Automated installation script with backup functionality
+- Comprehensive comments to Git configuration explaining each setting
+- Documentation section in README
+
+### Changed
+- Removed Git aliases (using full commands instead)
+- Changed Git default branch from 'master' to 'main'
+- Updated README with automated and manual installation instructions
+- README now references all documentation files
+
+## [2.2.0] - 2025-10-24
+### Added
+- Hyprland compositor configuration (10 config files)
+- Alacritty terminal emulator configuration
+- Bash shell configuration (.bashrc, .bash_profile, .profile)
+- Git configuration with aliases and user settings
+- Complete Omarchy default setup now tracked in dotfiles
+
+### Changed
+- Updated README.md with new package documentation
+- Reorganized configuration sections by category (Window Manager, Terminal & Shell, Development)
+
+## [2.1.0] - 2025-10-24
+### Added
+- Buffer management section with navigation and cleanup shortcuts
+- Fresh README.md for Omarchy setup
+- Generated package lists from current Omarchy system (165 pacman, 2 AUR)
+
+### Removed
+- Old configuration packages (hypr, nvidia-settings, rclone, wallpapers, zen, zshrc, git, assets)
+- All archived configs (i3, kitty, devilspie2, logseq, picom, starship)
+- Cursor extension files
+
+### Changed
+- Updated README for Omarchy-specific installation and usage
+
+## [2.0.0] - 2025-10-24
+### Added
+- Custom keybind cheatsheet with search functionality (<leader>mk)
+- Consistent <leader>m prefix for all custom keymaps
+- <leader>m as alias to open keybind menu
+- <leader>mt to open terminal in vertical split (right side)
+- Delete operations section (ggdG to delete all file contents)
+- Insert modes reference section
+- CLAUDE.md documentation for Claude Code integration
+
+### Changed
+- BREAKING: Migrated to Arch Linux (Omarchy) from EndeavourOS/Hyprland setup
+- Clean slate approach - removed old configs, keeping only nvim/
+- Migrated from <leader>k to <leader>mk for cheatsheet
+- Reorganized keybinds with emoji headers for better readability
+
+### Removed
+- Old Hyprland, Ghostty, Thunar, Zed, Zen Browser configs (archived)
+- Previous EndeavourOS-specific configurations
+
 ## [1.1.0] - 2025-06-15
 ### Added
 - feat: Add Ghostty config

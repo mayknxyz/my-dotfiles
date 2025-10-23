@@ -175,15 +175,94 @@ When setting up a new Omarchy system:
 
 ---
 
+## Validation & Testing
+
+### Validate Configurations
+
+Before deploying or committing changes, run validation:
+
+```bash
+./scripts/validate.sh
+```
+
+This checks:
+- Config file syntax (shell, Lua, TOML, JSON)
+- Stow conflicts
+- Broken symlinks
+- Required packages
+
+### Test Changes Safely
+
+Use the testing workflow for major changes:
+
+```bash
+./scripts/test-package.sh <package-name>
+```
+
+This creates a testing branch, validates configs, and guides you through testing and merging.
+
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for the complete workflow.
+
+---
+
+## Development Workflow
+
+### Branching Strategy
+
+Use feature branches for testing configuration changes:
+
+```bash
+# Create testing branch
+git checkout -b testing/<package-name>
+
+# Make changes, test, validate
+vim <package>/<config-file>
+stow -R <package>
+./scripts/validate.sh
+
+# Commit and merge
+git add <package>/
+git commit -m "Update <package> configuration"
+git checkout main
+git merge testing/<package> --no-ff
+```
+
+### Claude Commands
+
+When using Claude Code, these slash commands are available:
+
+- `/validate` - Run all validation checks
+- `/test-config <package>` - Start testing workflow
+- `/new-adr <title>` - Create Architecture Decision Record
+- `/stow-package <package>` - Safely stow with validation
+- `/update-packages` - Update package lists
+
+---
+
+## Architecture Decisions
+
+Configuration choices and their rationale are documented as Architecture Decision Records (ADRs):
+
+- [ADR-0001: Use GNU Stow](docs/adr/0001-use-gnu-stow.md)
+- [ADR-0002: Hyprland Compositor](docs/adr/0002-hyprland-compositor.md)
+- [ADR-0003: Package Structure](docs/adr/0003-package-structure.md)
+
+See [docs/adr/](docs/adr/) for all ADRs.
+
+---
+
 ## Documentation
 
+- **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Development workflow and branching strategy
 - **KEYBINDINGS.md** - Complete keybindings cheat sheet for Hyprland, Git, and Neovim
 - **CHANGELOG.md** - Version history and changes
 - **CLAUDE.md** - Documentation for Claude Code integration
+- **[docs/adr/](docs/adr/)** - Architecture Decision Records
 
 ## Notes
 
-- Always run `stow -n <package>` before deploying to check for conflicts
+- Always run `./scripts/validate.sh` before deploying or committing
+- Use testing branches for experimental changes
 - Back up existing configurations before stowing
 - This is a clean slate setup for Omarchy (migrated from EndeavourOS/Hyprland)
 - The `install.sh` script automatically creates backups before deploying

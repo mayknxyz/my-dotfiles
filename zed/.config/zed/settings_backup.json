@@ -40,16 +40,12 @@
 
   "languages": {
     "TypeScript": {
-      "formatter": [
-        {
-          "code_action": "source.organizeImports"
-        },
-        {
-          "code_action": "source.fixAll"
-        },
-        "prettier"
-      ],
-      "tab_size": 2
+      "formatter": "prettier",
+      "tab_size": 2,
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+      }
     },
     "JavaScript": {
       "formatter": "prettier",
@@ -115,8 +111,5 @@
     "svelte": true,
     "typescript": true,
     "tailwindcss": true
-  },
-
-  "auto_update": true
-  // Might help with file updates
+  }
 }

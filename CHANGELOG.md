@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2025-10-30
+### Added
+- Hyprland keybindings:
+  - SUPER+S for Slack application
+  - SUPER+SHIFT+C for Cloudflare dashboard
+  - SUPER+SHIFT+N for NotebookLM
+- Zed settings backup file (settings_backup.json)
+- Auto-update enabled in Zed configuration
+
+### Changed
+- Hyprland: Zed launcher now uses `uwsm app --` wrapper for better Wayland session management
+- Zed: TypeScript formatter configuration migrated to array-based format with code actions (organize imports, fix all) before Prettier formatting
+
 ## [2.4.0] - 2025-10-24
 ### Added
 - Validation infrastructure with master validate.sh script

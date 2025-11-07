@@ -1,3 +1,43 @@
+Need to Update:
+
+New Omarchy Install:
+
+- Download/Install latest omarchy ISO: https://omarchy.org/
+- Connect internet
+- Update omarchy
+- Install ghostty and zed
+- terminal: `gh auth login`
+- Login to web app github
+- `mkdir -p Dev/Local`
+- `mkdir -p Dev/Github`
+- Clone .dotfiles to user root dir
+- diff hypr config and update .dotfiles accordingly
+- Delete currently installed hypr/monitors.conf, hypr/bindings.conf, and hypr/hyprland.conf
+- Install stow
+- `stow hypr`
+- `stow omarchy`
+- `stow waybar`
+- `stow zed`
+- Install zsh
+- set zsh as default shell: `chsh -s $(which zsh)`
+- `stow zsh`
+- install omz `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+- `stow omz`
+- change theme t matte-black
+- change wallpaper to black-ocean
+- install service chromium account
+- login google accounts
+- install/login web apps
+  - claude (mike@madaliconsulting.com)
+  - gemini (mike@automeyt.com)
+  - slack-desktop in AUR
+  - Cloudflare (mike@mnxventures.com)
+  - Madali - Web Analytics (http://analytics.madaliconsulting.com)
+  - Madali - Design Platform (http://design.madaliconsulting.com)
+  - Madali - Automation (http://automation.madaliconsulting.com)
+  - Madali -App v1 (https://app.madaliconsulting.com)
+  - Madali - Server-1 (https://server-1.madaliconsulting.com)
+
 # Omarchy Dotfiles
 
 My personal dotfiles for Arch Linux (Omarchy) managed with GNU Stow.
@@ -22,6 +62,7 @@ cd ~/.dotfiles
 ```
 
 The installation script will:
+
 - ✅ Install GNU Stow if needed
 - ✅ Backup existing configurations
 - ✅ Deploy all dotfiles with stow
@@ -30,6 +71,7 @@ The installation script will:
 ### Manual Setup
 
 **Prerequisites:**
+
 ```bash
 sudo pacman -S git stow
 ```
@@ -83,6 +125,7 @@ This repository uses GNU Stow's directory structure:
 ```
 
 Each directory mirrors the home directory structure. For example:
+
 - `nvim/.config/nvim/` → `~/.config/nvim/`
 - `hypr/.config/hypr/` → `~/.config/hypr/`
 - `bash/.bashrc` → `~/.bashrc`
@@ -92,13 +135,16 @@ Each directory mirrors the home directory structure. For example:
 ## Current Configurations
 
 ### Window Manager
+
 - **Hyprland** (`hypr/`) - Wayland compositor with custom keybindings, monitors, and appearance settings
 
 ### Terminal & Shell
+
 - **Alacritty** (`alacritty/`) - GPU-accelerated terminal emulator
 - **Bash** (`bash/`) - Shell configuration with aliases and environment
 
 ### Development
+
 - **Git** (`git/`) - Version control aliases and configuration
 - **Neovim** (`nvim/`) - Lua-based configuration with custom keymaps
 - **Zed** (`zed/`) - Modern code editor configuration
@@ -186,6 +232,7 @@ Before deploying or committing changes, run validation:
 ```
 
 This checks:
+
 - Config file syntax (shell, Lua, TOML, JSON)
 - Stow conflicts
 - Broken symlinks

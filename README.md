@@ -6,6 +6,8 @@ New Omarchy Install:
 - Connect internet
 - Update omarchy
 - Install ripgrep
+- Install gita (AUR) : cd ~/projects then gita add -a */
+- Install delta (git-delta)
 - Install ghostty and zed
 - terminal: `gh auth login`
 - Login to web app github

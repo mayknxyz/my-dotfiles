@@ -5,6 +5,7 @@ New Omarchy Install:
 - Download/Install latest omarchy ISO: https://omarchy.org/
 - Connect internet
 - Update omarchy
+- Install ripgrep
 - Install ghostty and zed
 - terminal: `gh auth login`
 - Login to web app github

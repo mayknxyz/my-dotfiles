@@ -1,4 +1,7 @@
-# Custom alias to replace copydir functionality
+# Run command lista to open a custom note-taking markdown 
+alias lista='nvim $(fd lista.md)'
+
+## Custom alias to replace copydir functionality
 # Copies the current directory path to the system clipboard
 # ccwd = Copy Current Working Directory
 alias ccwd='pwd | tr -d "\n" | xclip -selection clipboard'

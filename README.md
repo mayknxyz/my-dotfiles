@@ -41,6 +41,7 @@ New Omarchy Install:
   - Madali -App v1 (https://app.madaliconsulting.com)
   - Madali - Server-1 (https://server-1.madaliconsulting.com)
 
+- install live-server for node.js dev
 # Omarchy Dotfiles
 
 My personal dotfiles for Arch Linux (Omarchy) managed with GNU Stow.

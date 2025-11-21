@@ -18,6 +18,7 @@ New Omarchy Install:
 - Delete currently installed hypr/monitors.conf, hypr/bindings.conf, and hypr/hyprland.conf
 - Install stow
 - `stow hypr`
+- stow walker
 - `stow omarchy`
 - `stow waybar`
 - `stow zed`
@@ -43,7 +44,10 @@ New Omarchy Install:
 
 - install live-server for node.js dev
 # Omarchy Dotfiles
-
+- install merging
+- install navi
+- install gimp
+- install yazi
 My personal dotfiles for Arch Linux (Omarchy) managed with GNU Stow.
 
 ---

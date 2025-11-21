@@ -173,24 +173,10 @@ See `.claude/` directory for Claude Code configuration and the `CLAUDE.md` file 
 
 ---
 
-## Architecture Decisions
-
-Configuration choices and their rationale are documented as Architecture Decision Records (ADRs):
-
-- [ADR-0001: Use GNU Stow](docs/adr/0001-use-gnu-stow.md)
-- [ADR-0002: Hyprland Compositor](docs/adr/0002-hyprland-compositor.md)
-- [ADR-0003: Package Structure](docs/adr/0003-package-structure.md)
-
-See [docs/adr/](docs/adr/) for all ADRs.
-
----
-
 ## Documentation
 
-- **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Development workflow and branching strategy
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Development workflow and branching strategy
 - **CHANGELOG.md** - Version history and changes
-- **CLAUDE.md** - Documentation for Claude Code integration
-- **[docs/adr/](docs/adr/)** - Architecture Decision Records
 
 ## Notes
 

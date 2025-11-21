@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Zed editor configuration
 - Omarchy-specific branding and system settings
 - Claude Code integration with custom slash commands
-- Comprehensive documentation (README, CONTRIBUTING, ADRs)
+- Comprehensive documentation (README, CONTRIBUTING)
 - MIT License
 
 ### Changed

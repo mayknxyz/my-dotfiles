@@ -5,7 +5,7 @@ All notable changes to this dotfiles repository will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-01-21
+## [1.0.0] - 2025-11-21
 
 ### Added
 - Initial public release of Omarchy dotfiles
@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 
 ### Changed
-- Migrated from EndeavourOS to Omarchy
+- Migrated from Custom Arch Setup to Omarchy
 - Replaced Alacritty with Ghostty terminal
 - Replaced Bash with Zsh as default shell
 - Streamlined configuration management workflow

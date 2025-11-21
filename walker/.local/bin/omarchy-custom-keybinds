@@ -1,0 +1,201 @@
+#!/bin/bash
+#
+# Hyprland Keybinding Viewer using 'walker' for an interactive menu.
+# This version is configured to display *only* custom, hardcoded keybinds.
+#
+# Dependencies: hyprctl, jq, awk, sort, cut, walker, xkbcli
+
+# --------------------------------------------------------------------
+# 1. KEYMAP CACHING AND LOOKUP
+# --------------------------------------------------------------------
+
+# Global associative array for caching keycode translations
+declare -A KEYCODE_SYM_MAP
+
+# Function to compile the current XKB keymap and populate the cache.
+build_keymap_cache() {
+    local keymap
+    # Compile the keymap using xkbcli (often required for accurate keycode mapping)
+    keymap="$(xkbcli compile-keymap)" || {
+        echo "Failed to compile keymap via xkbcli" >&2
+        return 1
+    }
+
+    # Use awk to extract the keycode-to-symbol mapping from the compiled keymap.
+    # This AWK block is designed to be robust and extract data efficiently.
+    while IFS=, read -r code sym; do
+        [[ -z "$code" || -z "$sym" ]] && continue
+        KEYCODE_SYM_MAP["$code"]="$sym"
+    done < <(
+        awk '
+        BEGIN { sec = "" }
+        /xkb_keycodes/ { sec = "codes"; next }
+        /xkb_symbols/  { sec = "syms";  next }
+        sec == "codes" {
+            # Find lines like <KEY_NAME> = 99;
+            if (match($0, /<([A-Za-z0-9_]+)>\s*=\s*([0-9]+)\s*;/, m)) code_by_name[m[1]] = m[2]
+        }
+        sec == "syms" {
+            # Find lines like key <KEY_NAME> { [ KEY_SYMBOL, ...
+            if (match($0, /key\s*<([A-Za-z0-9_]+)>\s*\{\s*\[\s*([^, \]]+)/, m)) sym_by_name[m[1]] = m[2]
+        }
+        END {
+            # Map codes to symbols using the shared key name
+            for (k in code_by_name) {
+                c = code_by_name[k]
+                s = sym_by_name[k]
+                if (c != "" && s != "" && s != "NoSymbol") print c "," s
+            }
+        }
+        ' <<<"$keymap"
+    )
+}
+
+# Function to look up a keycode in the cached map
+lookup_keycode_cached() {
+    printf '%s' "${KEYCODE_SYM_MAP[$1]}"
+}
+
+# Function to replace numeric keycodes and mouse button IDs with symbols
+parse_keycodes() {
+    while IFS= read -r line; do
+        # 1. Handle keyboard keycodes (e.g., ,code:99)
+        if [[ "$line" =~ ,code:([0-9]+) ]]; then
+            local code="${BASH_REMATCH[1]}"
+            local symbol=$(lookup_keycode_cached "$code")
+            # Replace the numeric code with the symbol (or keep code if lookup fails)
+            local parsed_line="${line/,code:${code}/,$symbol}"
+            echo "${parsed_line/,code:/,}" # Clean up remaining "code:" if symbol was empty
+
+        # 2. Handle mouse button codes (e.g., mouse:272)
+        elif [[ "$line" =~ mouse:([0-9]+) ]]; then
+            local code="${BASH_REMATCH[1]}"
+            local symbol="mouse:${code}" # Default
+            case "$code" in
+                272) symbol="LEFT_MB" ;;
+                273) symbol="RIGHT_MB" ;;
+                274) symbol="MIDDLE_MB" ;;
+                275) symbol="SIDE_MB_1" ;; # Extended mouse buttons
+                276) symbol="SIDE_MB_2" ;;
+            esac
+            echo "${line/mouse:${code}/$symbol}"
+
+        # 3. Pass through regular key symbols (e.g., SUPER,Q)
+        else
+            echo "$line"
+        fi
+    done
+}
+
+# --------------------------------------------------------------------
+# 2. DATA FETCHING AND PRE-PROCESSING
+# --------------------------------------------------------------------
+
+# OVERRIDE: This function is now empty to deliberately exclude all keybinds
+# defined in your hyprland.conf, leaving only the custom static binds.
+dynamic_bindings() {
+    : # No operation. Outputs nothing.
+}
+
+# Hardcoded bindings: This is where you put your custom keybindings now.
+static_bindings() {
+    # Format: MODIFIERS,KEY_SYMBOL,DESCRIPTION,DISPATCHER,ARGUMENT
+    # Note: Description is the second field ($2)
+    
+    # 3 Custom Keybinds for testing:
+    echo "SUPER,T,Launch Terminal,exec,alacritty"
+    echo "SUPER SHIFT,C,Take Screenshot,exec,grimblast copy area"
+    echo "SUPER CTRL,L,Lock Screen,exec,loginctl lock-session"
+    
+    # You can add more custom binds below this line
+    # ...
+}
+
+# --------------------------------------------------------------------
+# 3. OUTPUT FORMATTING AND PRIORITIZATION
+# --------------------------------------------------------------------
+
+# Parse and format keybindings into a displayable string
+parse_bindings() {
+    awk -F, '
+    {
+        # Key combination is always the first field ($1) after keycode/symbol parsing
+        key_combo = $1;
+
+        # Clean up: strip leading and trailing punctuation/spaces
+        gsub(/^[ \t,+]+|[ \t,+]+$/, "", key_combo);
+        gsub(/[ \t]+/, " ", key_combo); # Collapse multiple spaces
+
+        # Action is the description ($2) or the command itself
+        action = $2;
+
+        if (action == "") {
+            # Reconstruct the command from the remaining fields ($3 onwards)
+            action = $3 (NF > 3 ? "," : "") $4; # Simple reconstruction for common dispatcher,arg format
+
+            # Clean up the action: remove leading dispatcher names
+            sub(/(exec|dispatch|extension|submap) +/, "", action);
+            sub(/^,/, "", action);
+
+            # Escape XML entities for safety in various frontends
+            gsub(/&/, "&amp;", action);
+            gsub(/</, "&lt;", action);
+            gsub(/>/, "&gt;", action);
+        }
+
+        if (action != "") {
+            # Print in a clean, aligned format: Key_Combo -> Action
+            printf "%-35s → %s\n", key_combo, action;
+        }
+    }'
+}
+
+# Assign priority to common actions for better sorting in the menu
+prioritize_entries() {
+    # Since this version only displays custom binds, the priority block is simplified
+    # but kept intact for sorting based on the custom description fields.
+    awk '
+    {
+        line = $0
+        prio = 50 # Default priority
+
+        # Lower numbers = Higher priority (appears closer to the top)
+        if (match(line, /Terminal/)) prio = 0
+        else if (match(line, /Browser/)) prio = 1
+        else if (match(line, /File manager/)) prio = 2
+        else if (match(line, /Launch apps/)) prio = 3
+        else if (match(line, /Toggle window floating/)) prio = 9
+        else if (match(line, /Close window/)) prio = 10
+        else if (match(line, /Screenshot/)) prio = 15
+        else if (match(line, /workspace [0-9]+/)) prio = 20 # Switching workspaces
+        else if (match(line, /Move window focus/)) prio = 21
+
+        # print "priority<TAB>line"
+        printf "%d\t%s\n", prio, line
+    }' |
+    sort -k1,1n -k2,2 | # Sort numerically by priority (field 1), then alphabetically by content (field 2)
+    cut -f2- # Remove the priority field before outputting
+}
+
+# --------------------------------------------------------------------
+# 4. MAIN EXECUTION
+# --------------------------------------------------------------------
+
+# 1. Get monitor height to calculate walker menu size dynamically
+MONITOR_HEIGHT=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .height')
+MENU_HEIGHT=$((MONITOR_HEIGHT * 40 / 100)) # 40% of screen height
+
+# 2. Build the keycode cache (the most time-consuming step)
+build_keymap_cache
+
+# 3. Chain the commands: Fetch -> Process -> Format -> Display
+{
+    dynamic_bindings  # This is now empty, filtering out dynamic binds
+    static_bindings   # This contains your 3 custom test binds
+} |
+    sort -u |         # Remove duplicate bindings
+    parse_keycodes |  # Translate numeric keycodes (e.g., 99) to symbols (e.g., Return)
+    parse_bindings |  # Combine modifiers/key into 'KEY_COMBO → ACTION' format
+    prioritize_entries | # Apply priority sorting
+    # Pipe the final, formatted list to walker
+    walker --dmenu -p 'Custom Keybindings' --width 800 --height "$MENU_HEIGHT"

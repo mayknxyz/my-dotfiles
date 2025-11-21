@@ -1,0 +1,46 @@
+# Sensitive files with API keys or credentials
+# Note: zed settings.json contains API keys - use settings.json.example as template
+zed/.config/zed/settings.json
+
+# Environment files with secrets
+*.local.json
+.env
+.env.local
+.env.*.local
+credentials.json
+secrets/
+*.key
+*.pem
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Temporary files
+*.tmp
+.cache/
+temp/
+tmp/
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Git conflict files
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt

@@ -5,6 +5,16 @@ All notable changes to this dotfiles repository will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-11-22
+
+### Changed
+- Removed Neovim configuration from dotfiles (now managed separately at ~/.config/nvim)
+- Enhanced Walker keybindings viewer with git command reminders (gst, ga, gcmsg, gsw, gswc, gwta, gwtls, gwtmv, gwtrm)
+- Enhanced Walker keybindings viewer with nvim command reminders (motions, operators, search, terminal commands, Telescope integration)
+
+### Removed
+- nvim/.config/nvim directory (migrated to standalone repository)
+
 ## [1.0.0] - 2025-11-21
 
 ### Added
@@ -43,4 +53,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[1.1.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.1.0
 [1.0.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.0.0

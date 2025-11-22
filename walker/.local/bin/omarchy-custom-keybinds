@@ -101,12 +101,54 @@ dynamic_bindings() {
 static_bindings() {
     # Format: MODIFIERS,KEY_SYMBOL,DESCRIPTION,DISPATCHER,ARGUMENT
     # Note: Description is the second field ($2)
-    
-    # 3 Custom Keybinds for testing:
-    echo "SUPER,T,Launch Terminal,exec,alacritty"
-    echo "SUPER SHIFT,C,Take Screenshot,exec,grimblast copy area"
-    echo "SUPER CTRL,L,Lock Screen,exec,loginctl lock-session"
-    
+
+    # Git command reminders (terminal/nvim aliases)
+    echo "git: gst,git status"
+    echo "git: ga,git add"
+    echo "git: gcmsg,git commit -m"
+    echo "git: gsw,git switch"
+    echo "git: gswc,git switch -c"
+    echo "git: gwta,git worktree add"
+    echo "git: gwtls,git worktree list"
+    echo "git: gwtmv,git worktree move"
+    echo "git: gwtrm,git worktree remove"
+
+    # Vim/Nvim command reminders
+    echo "nvim: i,Insert"
+    echo "nvim: a,Append"
+    echo "nvim: x,Delete Character"
+    echo "nvim: c,Change"
+    echo "nvim: d,Delete"
+    echo "nvim: y,Yank (Copy)"
+    echo "nvim: p,Put (Paste)"
+    echo "nvim: u,Undo"
+    echo "nvim: <C-r>,Redo"
+    echo "nvim: gx,Go Xternal (Open URL)"
+    echo "nvim: <leader><leader>,Custom"
+    echo "nvim: w,Word forward"
+    echo "nvim: b,Word backward"
+    echo "nvim: e,Word end"
+    echo "nvim: 0,Line start"
+    echo "nvim: $,Line end"
+    echo "nvim: f{char},Find character"
+    echo "nvim: t{char},Till character"
+    echo "nvim: ;,Repeat find/till"
+    echo "nvim: comma,Reverse find/till"
+    echo "nvim: <C-6>,Toggle Alternate File"
+    echo "nvim: /phrase,Search forward"
+    echo "nvim: n,Next search match"
+    echo "nvim: N,Previous search match"
+    echo "nvim: G,Go to last line"
+    echo "nvim: gg,Go to first line"
+    echo "nvim: <C-f>,Page forward"
+    echo "nvim: <C-b>,Page backward"
+    echo "nvim: <leader>sf,Telescope: Find Files"
+    echo "nvim: :w,Save"
+    echo "nvim: :term,Open Terminal"
+    echo "nvim: <C-\><C-n>,Exit Terminal Mode"
+    echo "nvim: :!command,Shell Execute"
+    echo "nvim: :cd path,Change Directory"
+
     # You can add more custom binds below this line
     # ...
 }

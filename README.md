@@ -119,17 +119,66 @@ stow -n hypr  # Check for conflicts before deploying
 
 ---
 
+## Prepare Bootable USB
+
+Use Ventoy to create a multi-ISO bootable USB drive.
+
+### Install Ventoy
+
+```bash
+paru -S ventoy-bin
+```
+
+### Create Bootable USB
+
+```bash
+# List drives to find your USB
+lsblk
+
+# Install Ventoy to USB (replace sdX with your USB device)
+sudo ventoy -i -g /dev/sdX
+```
+
+### Add ISO Files
+
+Mount the USB and copy ISO files directly to it:
+
+```bash
+# Mount USB (Ventoy partition)
+sudo mount /dev/sdX1 /mnt
+
+# Copy Arch ISO
+cp ~/Downloads/archlinux-*.iso /mnt/
+
+# Unmount
+sudo umount /mnt
+```
+
+Boot from USB and Ventoy will display a menu with all available ISOs.
+
+### Ventoy Flags
+
+| Flag | Description |
+|------|-------------|
+| `-i` | Install (first time) |
+| `-u` | Update (keeps data) |
+| `-I` | Force reinstall (destroys data) |
+| `-g` | Use GPT (recommended for UEFI) |
+
+---
+
 ## System Restoration
 
 When setting up a new system:
 
-1. Install base Arch Linux system (see [ARCH_MINIMAL_PLAN.md](ARCH_MINIMAL_PLAN.md))
-2. Install prerequisites: `sudo pacman -S git stow zsh`
-3. Clone dotfiles: `git clone https://github.com/mayknxyz/my-dotfiles.git ~/.dotfiles`
-4. Navigate to dotfiles: `cd ~/.dotfiles`
-5. Deploy packages: `stow ghostty git hypr nvim omz zsh`
-6. Set Zsh as default shell: `chsh -s $(which zsh)`
-7. Log out and back in to apply all changes
+1. Prepare bootable USB with Ventoy (see above)
+2. Install base Arch Linux system (see [ARCH_MINIMAL_PLAN.md](ARCH_MINIMAL_PLAN.md))
+3. Install prerequisites: `sudo pacman -S git stow zsh`
+4. Clone dotfiles: `git clone https://github.com/mayknxyz/my-dotfiles.git ~/.dotfiles`
+5. Navigate to dotfiles: `cd ~/.dotfiles`
+6. Deploy packages: `stow ghostty git hypr nvim omz zsh`
+7. Set Zsh as default shell: `chsh -s $(which zsh)`
+8. Log out and back in to apply all changes
 
 ---
 

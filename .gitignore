@@ -1,6 +1,4 @@
 # Sensitive files with API keys or credentials
-# Note: zed settings.json contains API keys - use settings.json.example as template
-zed/.config/zed/settings.json
 
 # Environment files with secrets
 *.local.json

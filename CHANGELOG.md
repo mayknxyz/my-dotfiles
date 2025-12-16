@@ -5,6 +5,17 @@ All notable changes to this dotfiles repository will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-12-16
+
+### Added
+- ARCH_MINIMAL_PLAN.md: Comprehensive plan for minimal, TUI-first Arch Linux setup
+  - Hyprland with no status bar for maximum minimalism
+  - TUI tools: yazi, lazygit, lazydocker, btop, fzf, etc.
+  - Shell: zsh + oh-my-zsh + powerlevel10k
+  - Screenshot stack: grim, slurp, satty, wayfreeze
+  - NVIDIA graphics configuration
+  - Full package list with installation order
+
 ## [1.1.0] - 2025-11-22
 
 ### Changed
@@ -53,5 +64,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[2.0.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v2.0.0
 [1.1.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.1.0
 [1.0.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.0.0

@@ -1,17 +1,17 @@
-# Omarchy Dotfiles
+# Dotfiles
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Arch Linux](https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff)](https://archlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-Wayland-5BCEFA?logo=wayland&logoColor=white)](https://hyprland.org/)
 [![Maintained](https://img.shields.io/badge/Maintained-yes-green.svg)](https://github.com/mayknxyz/my-dotfiles/graphs/commit-activity)
 
-My personal dotfiles for Arch Linux (Omarchy) managed with GNU Stow.
+My personal dotfiles for a minimal, TUI-first Arch Linux setup managed with GNU Stow.
 
 ---
 
 ## About
 
-This repository contains my configuration files for Arch Linux (Omarchy). It uses GNU Stow for symlink management, making it easy to deploy and manage configurations across systems.
+This repository contains my configuration files for a minimal Arch Linux setup. It uses GNU Stow for symlink management, making it easy to deploy and manage configurations across systems.
 
 ---
 
@@ -41,7 +41,7 @@ cd ~/.dotfiles
 stow hypr
 
 # Deploy all packages
-stow ghostty git hypr nvim omarchy omz walker waybar zed zsh
+stow ghostty git hypr nvim omz zsh
 ```
 
 ---
@@ -56,11 +56,7 @@ This repository uses GNU Stow's directory structure:
 ├── git/           # Git configuration
 ├── hypr/          # Hyprland compositor configuration
 ├── nvim/          # Neovim configuration
-├── omarchy/       # Omarchy-specific branding and settings
 ├── omz/           # Oh My Zsh customizations
-├── walker/        # Walker application launcher
-├── waybar/        # Waybar status bar
-├── zed/           # Zed editor configuration
 ├── zsh/           # Zsh shell configuration
 └── .claude/       # Claude Code integration and commands
 ```
@@ -75,12 +71,9 @@ Each directory mirrors the home directory structure. For example:
 
 ## Current Configurations
 
-### Window Manager & Desktop
+### Window Manager
 
 - **Hyprland** (`hypr/`) - Wayland compositor with custom keybindings, monitors, and appearance settings
-- **Waybar** (`waybar/`) - Customizable status bar for Wayland compositors
-- **Walker** (`walker/`) - Application launcher with custom keybindings
-- **Omarchy** (`omarchy/`) - Omarchy-specific branding and system configuration
 
 ### Terminal & Shell
 
@@ -92,7 +85,6 @@ Each directory mirrors the home directory structure. For example:
 
 - **Git** (`git/`) - Version control aliases and configuration
 - **Neovim** (`nvim/`) - Lua-based configuration with custom keymaps
-- **Zed** (`zed/`) - Modern code editor configuration
 
 ---
 
@@ -129,13 +121,13 @@ stow -n hypr  # Check for conflicts before deploying
 
 ## System Restoration
 
-When setting up a new Omarchy system:
+When setting up a new system:
 
-1. Install base Arch Linux system
+1. Install base Arch Linux system (see [ARCH_MINIMAL_PLAN.md](ARCH_MINIMAL_PLAN.md))
 2. Install prerequisites: `sudo pacman -S git stow zsh`
 3. Clone dotfiles: `git clone https://github.com/mayknxyz/my-dotfiles.git ~/.dotfiles`
 4. Navigate to dotfiles: `cd ~/.dotfiles`
-5. Deploy packages: `stow ghostty git hypr nvim omarchy omz walker waybar zed zsh`
+5. Deploy packages: `stow ghostty git hypr nvim omz zsh`
 6. Set Zsh as default shell: `chsh -s $(which zsh)`
 7. Log out and back in to apply all changes
 
@@ -175,14 +167,13 @@ See `.claude/` directory for Claude Code configuration and the `CLAUDE.md` file 
 
 ## Documentation
 
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Development workflow and branching strategy
-- **CHANGELOG.md** - Version history and changes
+- **[ARCH_MINIMAL_PLAN.md](ARCH_MINIMAL_PLAN.md)** - Plan for minimal, TUI-first Arch Linux setup
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history and changes
 
 ## Notes
 
 - Use testing branches for experimental changes
 - Back up existing configurations before stowing
-- This is a clean slate setup for Omarchy (migrated from EndeavourOS/Hyprland)
 - Test configurations after deployment to ensure they work correctly
 
 ---

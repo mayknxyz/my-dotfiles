@@ -1,0 +1,13 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "permissions": {
+    "allow": ["Read", "Glob", "Grep"],
+    "deny": []
+  },
+  "hooks": {
+    "PreToolUse": []
+  }
+}

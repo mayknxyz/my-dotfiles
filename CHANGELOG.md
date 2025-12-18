@@ -5,6 +5,13 @@ All notable changes to this dotfiles repository will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2025-12-18
+
+### Added
+- Added PACKAGES.md with complete list of 962 installed packages and descriptions
+- Added quick reference table for packages with different command names (e.g., github-cli → gh)
+- Added useful pacman commands for package discovery
+
 ## [1.5.0] - 2025-12-17
 
 ### Changed
@@ -106,6 +113,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[1.6.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.6.0
 [1.5.0]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.5.0
 [1.4.1]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.4.1
 [1.3.1]: https://github.com/mayknxyz/my-dotfiles/releases/tag/v1.3.1
